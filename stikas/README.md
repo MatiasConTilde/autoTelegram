@@ -1,5 +1,5 @@
-# autoUNO
-Plays UNO automatically with [mau_mau_bot](https://github.com/jh0ker/mau_mau_bot) (hosted on [@unobot](https://t.me/unobot))
+# autoStikas
+Replaces messages that contain words from [my sticker pack](https://t.me/addstickers/supageil) with the actual stickers
 
 ### Install
 Get your API information from https://my.telegram.org/apps (Learn how to get one at https://core.telegram.org/api/obtaining_api_id)
@@ -10,10 +10,7 @@ Create a `config.json` file with
 	"API_ID": 12345,
 	"API_HASH": "0123456789abcdef0123456789abcdef",
 	"PHONE_NUMBER": "+1987654321",
-	"MIN_PLAYERS": 3,
-	"GROUP_ID": 1234567890,
-	"BOT_ID": 118169453,
-	"BOT_NAME": "unobot"
+	"MIN_WORD_AMOUNT": 2
 }
 ```
 and replace the according fields to yours:
@@ -24,13 +21,7 @@ and replace the according fields to yours:
 
 `PHONE_NUMBER`: Your phone number in international format (for the first connection)
 
-`MIN_PLAYERS`: The minimal amout of players that have joined before starting the game automatiacally
-
-`GROUP_ID`: The id of the group in which you want to play
-
-`BOT_ID`: The id of the UNO bot ([@unobot](https://t.me/unobot) is 118169453)
-
-`BOT_NAME`: The username of the UNO bot
+`MIN_WORD_AMOUNT`: The minimum amount of words in a message for it to be converted into stickers
 
 ### Run
 `python3 main.py`
