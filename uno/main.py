@@ -48,11 +48,7 @@ def do_next_move():
 	return False
 
 client = TelegramClient('uno', config['API_ID'], config['API_HASH'], update_workers=4)
-client.connect()
-
-if not client.is_user_authorized():
-	client.send_code_request(config['PHONE_NUMBER'])
-	client.sign_in(config['PHONE_NUMBER'], input('Enter code: '))
+client.start()
 
 group_chat = client.get_input_entity(config['GROUP_ID'])
 uno_bot = client.get_input_entity(config['BOT_ID'])

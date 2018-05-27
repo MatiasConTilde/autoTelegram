@@ -45,16 +45,12 @@ with open('config.json') as file:
 	config = json.load(file)
 
 client = TelegramClient('stikas', config['API_ID'], config['API_HASH'], update_workers=4)
-client.connect()
-
-if not client.is_user_authorized():
-	client.send_code_request(config['PHONE_NUMBER'])
-	client.sign_in(config['PHONE_NUMBER'], input('Enter code: '))
+client.start()
 
 @client.on(events.NewMessage(outgoing=True))
 def update_handler(event):
 	words = event.message.message.split()
-	if len(words >= config['MIN_AMOUT']):
+	if len(words) >= config['MIN_WORD_AMOUNT']:
 		all_correct = True
 		for word in words:
 			if not word in stickers:

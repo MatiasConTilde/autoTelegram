@@ -9,7 +9,6 @@ Create a `config.json` file with
 {
 	"API_ID": 12345,
 	"API_HASH": "0123456789abcdef0123456789abcdef",
-	"PHONE_NUMBER": "+1987654321",
 	"MIN_WORD_AMOUNT": 2
 }
 ```
@@ -19,11 +18,11 @@ and replace the according fields to yours:
 
 `API_HASH`: The Telegram API hash
 
-`PHONE_NUMBER`: Your phone number in international format (for the first connection)
-
 `MIN_WORD_AMOUNT`: The minimum amount of words in a message for it to be converted into stickers
 
 ### Run
 `python3 main.py`
 
 To stop, send `Enter` or `^C`
+
+On the first connection, you will have provide login information as phone number and password
