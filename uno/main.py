@@ -42,7 +42,7 @@ def do_next_move():
 	# If no normal card is available, choose the best special one
 	for card in reversed(buttons):
 		if name_from_id(card.id) in special_stickers:
-			client(SendInlineBotResultRequest(group_chat, inline_result.query_id, buttons[0].id))
+			client(SendInlineBotResultRequest(group_chat, inline_result.query_id, card.id))
 			return True
 
 	return False
