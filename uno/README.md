@@ -9,7 +9,6 @@ Create a `config.json` file with
 {
 	"API_ID": 12345,
 	"API_HASH": "0123456789abcdef0123456789abcdef",
-	"MIN_PLAYERS": 3,
 	"GROUP_ID": 1234567890,
 	"BOT_ID": 118169453,
 	"BOT_NAME": "unobot"
@@ -20,8 +19,6 @@ and replace the according fields to yours:
 `API_ID`: The Telegram API id
 
 `API_HASH`: The Telegram API hash
-
-`MIN_PLAYERS`: The minimal amout of players that have joined before starting the game automatiacally
 
 `GROUP_ID`: The id of the group in which you want to play
 

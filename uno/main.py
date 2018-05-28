@@ -53,12 +53,8 @@ client.start()
 group_chat = client.get_input_entity(config['GROUP_ID'])
 uno_bot = client.get_input_entity(config['BOT_ID'])
 
-joined_count = 0
-
 @client.on(events.NewMessage(chats=group_chat, incoming=True))
 def update_handler(event):
-	global joined_count
-
 	if event.message.from_id == uno_bot.user_id:
 		if event.message.mentioned:
 			do_next_move()
@@ -66,11 +62,6 @@ def update_handler(event):
 			client.send_message(group_chat, '/new@'+config['BOT_NAME'])
 		if event.message.message == 'Created a new game! Join the game with /join and start the game with /start':
 			client.send_message(group_chat, '/join@'+config['BOT_NAME'])
-			joined_count = 0
-		if event.message.message == 'Joined the game':
-			joined_count += 1
-		if joined_count >= config['MIN_PLAYERS']:
-			client.send_message(group_chat, '/start@'+config['BOT_NAME'])
 
 do_next_move()
 
