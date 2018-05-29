@@ -32,19 +32,20 @@ def update_handler(event):
 			if 'Round' in text or 'Раунд' in text:
 				index = 2
 			questions[group_id] = text.split('\n')[index]
+			print(questions[group_id])
 
 			if questions[group_id] in data:
 				client.send_message(event.message.to_id, data[questions[group_id]])
-				print('Sent', data[questions[group_id]])
+				print('A:', data[questions[group_id]])
 
-		else:
+		elif not questions[group_id] in data:
 			for regex in solutions:
 				result = re.search(regex, text.split('\n')[0])
 				if result and questions[group_id]:
 					data[questions[group_id]] = result.group(1)
 					with open('db.json', 'w') as db:
 						json.dump(data, db)
-					print(len(data), questions[group_id],  data[questions[group_id]])
+					print(len(data))
 					break
 
 try:
