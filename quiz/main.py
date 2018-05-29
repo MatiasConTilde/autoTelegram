@@ -1,6 +1,7 @@
 from telethon import TelegramClient, events
-from telethon.tl.types import PeerChannel, PeerChat
-import json, re
+from telethon.tl.types import PeerChannel, PeerChat, SendMessageTypingAction, SendMessageCancelAction
+from telethon.tl.functions.messages import SetTypingRequest
+import json, re, time, random
 
 with open('config.json') as file:
 	config = json.load(file)
@@ -35,7 +36,11 @@ def update_handler(event):
 			print(questions[group_id])
 
 			if questions[group_id] in data:
+				time.sleep(random.randrange(0, 3))
+				client(SetTypingRequest(event.message.to_id, SendMessageTypingAction()))
+				time.sleep(random.randrange(2, 9))
 				client.send_message(event.message.to_id, data[questions[group_id]])
+				client(SetTypingRequest(event.message.to_id, SendMessageCancelAction()))
 				print('A:', data[questions[group_id]])
 
 		elif not questions[group_id] in data:
