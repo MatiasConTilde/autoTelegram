@@ -57,7 +57,7 @@ def update_handler(event):
 				all_correct = False
 				break
 
-		if all_correct:
+		if all_correct or words[-1] == '.':
 			client.delete_messages(event.message.to_id, event.message.id);
 			for word in words:
 				client.send_file(event.message.to_id, InputMediaDocument(id=InputDocument(id=stickers[word][0], access_hash=stickers[word][1])), reply_to=event.message.reply_to_msg_id)
